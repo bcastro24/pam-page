@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sombreros Elevation</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&family=Playfair+Display:wght@700&display=swap');
 
     body {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Cormorant Garamond', serif;
       margin: 0;
       padding: 0;
       background: linear-gradient(to bottom, #0d0d0d, #1a1a1a);
@@ -16,16 +16,41 @@
     }
 
     header {
-      text-align: center;
-      padding: 1.5rem;
-      background: #111;
+      background-color: #111;
       color: #fff;
+      padding: 1.5rem;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.6);
     }
 
     header h1 {
       font-size: 3rem;
       margin: 0;
+      font-weight: 700;
+      background: linear-gradient(to right, #ff7e5f, #feb47b);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
       text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+      position: relative;
+      display: inline-block;
+    }
+
+    header h1::after {
+      content: '✨';
+      font-size: 1.5rem;
+      position: absolute;
+      top: -5px;
+      right: -25px;
+    }
+
+    header .by-designer {
+      font-size: 0.9rem;
+      font-style: italic;
+      color: #feb47b;
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
     }
 
     header nav {
@@ -37,6 +62,7 @@
       margin: 0 1rem;
       text-decoration: none;
       font-size: 1.2rem;
+      font-weight: 500;
       border-bottom: 2px solid transparent;
       transition: border-bottom 0.3s ease;
     }
@@ -58,12 +84,11 @@
       display: flex;
       gap: 10px;
       transition: transform 0.5s ease-in-out;
-      cursor: grab;
     }
 
     .carrusel img {
-      width: 300px;
-      height: 200px;
+      width: 400px;
+      height: 250px;
       object-fit: cover;
       border-radius: 10px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
@@ -87,95 +112,121 @@
     .indicators .active {
       background: #fff;
     }
+
+    .catalogo {
+      padding: 2rem;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .producto {
+      background: #222;
+      border-radius: 10px;
+      overflow: hidden;
+      text-align: center;
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .producto:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    .producto img {
+      max-width: 100%;
+      height: 250px;
+      object-fit: cover;
+    }
+
+    .producto h3 {
+      margin: 1rem 0 0.5rem;
+      font-size: 1.3rem;
+      font-weight: 700;
+    }
+
+    footer {
+      background-color: #111;
+      color: #ccc;
+      text-align: center;
+      padding: 2rem 1rem;
+      margin-top: 2rem;
+    }
+
+    footer .contacto {
+      margin-bottom: 1rem;
+    }
+
+    footer a {
+      color: #aaa;
+      text-decoration: none;
+      margin: 0 0.5rem;
+    }
+
+    footer a:hover {
+      color: #fff;
+    }
   </style>
+  <script>
+    let currentIndex = 0;
+
+    function showSlide(index) {
+      const slides = document.querySelectorAll('.carrusel img');
+      const indicators = document.querySelectorAll('.indicators div');
+      slides.forEach((slide, i) => {
+        slide.style.transform = `translateX(${(i - index) * 100}%)`;
+      });
+      indicators.forEach(ind => ind.classList.remove('active'));
+      indicators[index].classList.add('active');
+      currentIndex = index;
+    }
+
+    function autoSlide() {
+      const slides = document.querySelectorAll('.carrusel img');
+      currentIndex = (currentIndex + 1) % slides.length;
+      showSlide(currentIndex);
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const indicators = document.querySelectorAll('.indicators div');
+      indicators.forEach((indicator, index) => {
+        indicator.addEventListener('click', () => showSlide(index));
+      });
+
+      // Desplazamiento automático
+      setInterval(autoSlide, 3000);
+      showSlide(currentIndex);
+    });
+  </script>
 </head>
 <body>
   <header>
     <h1>Sombreros Elevation</h1>
+    <span class="by-designer">by Pamela</span>
     <nav>
+      <a href="#carrusel">Principal</a>
       <a href="#catalogo">Catálogo</a>
     </nav>
   </header>
 
-  <section class="carrusel-container">
-    <div class="carrusel" id="carrusel">
+  <section id="carrusel" class="carrusel-container">
+    <h2 class="carrusel-title">Principal</h2>
+    <div class="carrusel">
       <img src="img/modeloshat/sombrero1.jpeg" alt="Sombrero 1">
       <img src="img/modeloshat/sombrero2.jpeg" alt="Sombrero 2">
       <img src="img/modeloshat/sombrero3.jpeg" alt="Sombrero 3">
       <img src="img/modeloshat/sombrero4.jpeg" alt="Sombrero 4">
       <img src="img/modeloshat/sombrero5.jpeg" alt="Sombrero 5">
     </div>
-    <div class="indicators" id="indicators"></div>
+    <div class="indicators">
+      <div class="active"></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
   </section>
-
-  <script>
-    const carrusel = document.getElementById("carrusel");
-    const indicatorsContainer = document.getElementById("indicators");
-
-    const images = document.querySelectorAll(".carrusel img");
-    let currentIndex = 0;
-
-    function createIndicators() {
-      images.forEach((_, i) => {
-        const indicator = document.createElement("div");
-        if (i === 0) indicator.classList.add("active");
-        indicator.addEventListener("click", () => {
-          setSlide(i);
-        });
-        indicatorsContainer.appendChild(indicator);
-      });
-    }
-
-    function updateIndicators() {
-      const indicators = document.querySelectorAll(".indicators div");
-      indicators.forEach(ind => ind.classList.remove("active"));
-      indicators[currentIndex].classList.add("active");
-    }
-
-    function setSlide(index) {
-      currentIndex = index;
-      carrusel.style.transform = `translateX(-${currentIndex * (images[0].offsetWidth + 10)}px)`;
-      updateIndicators();
-    }
-
-    function nextSlide() {
-      currentIndex = (currentIndex + 1) % images.length;
-      setSlide(currentIndex);
-    }
-
-    // Auto-slide every 3 seconds
-    setInterval(nextSlide, 3000);
-
-    // Drag functionality
-    let isDragging = false, startX, scrollLeft;
-
-    carrusel.addEventListener("mousedown", (e) => {
-      isDragging = true;
-      carrusel.style.cursor = "grabbing";
-      startX = e.pageX - carrusel.offsetLeft;
-      scrollLeft = carrusel.scrollLeft;
-    });
-
-    carrusel.addEventListener("mouseleave", () => {
-      isDragging = false;
-      carrusel.style.cursor = "grab";
-    });
-
-    carrusel.addEventListener("mouseup", () => {
-      isDragging = false;
-      carrusel.style.cursor = "grab";
-    });
-
-    carrusel.addEventListener("mousemove", (e) => {
-      if (!isDragging) return;
-      e.preventDefault();
-      const x = e.pageX - carrusel.offsetLeft;
-      const walk = x - startX;
-      carrusel.scrollLeft = scrollLeft - walk;
-    });
-
-    createIndicators();
-  </script> 
 
   <section id="catalogo" class="catalogo">
     <div class="producto">
