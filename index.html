@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Elevation Hat</title>
+  <title>Sombreros Elevation</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Roboto:wght@400;500&display=swap');
-    
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&family=Playfair+Display:wght@700&display=swap');
+
     body {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Cormorant Garamond', serif;
       margin: 0;
       padding: 0;
       background: linear-gradient(to bottom, #0d0d0d, #1a1a1a);
@@ -19,13 +19,34 @@
       color: #fff;
       padding: 1.5rem;
       text-align: center;
+      position: relative;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.6);
     }
     header h1 {
-      font-size: 2.8rem;
+      font-size: 3rem;
       margin: 0;
       font-weight: 700;
+      background: linear-gradient(to right, #ff7e5f, #feb47b);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
       text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+      position: relative;
+      display: inline-block;
+    }
+    header h1::after {
+      content: '✨';
+      font-size: 1.5rem;
+      position: absolute;
+      top: -5px;
+      right: -25px;
+    }
+    header .by-designer {
+      font-size: 0.9rem;
+      font-style: italic;
+      color: #feb47b;
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
     }
     header nav {
       margin-top: 1rem;
@@ -48,7 +69,7 @@
       position: relative;
     }
     .carrusel-title {
-      font-size: 2rem;
+      font-size: 2.2rem;
       margin-bottom: 1rem;
       font-weight: 700;
     }
@@ -57,21 +78,14 @@
       overflow: hidden;
       justify-content: center;
       gap: 1rem;
-      animation: carrusel 10s infinite;
+      scroll-behavior: smooth;
     }
     .carrusel img {
       width: 100%;
-      max-width: 350px;
+      max-width: 400px;
       height: auto;
       border-radius: 10px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
-    }
-    @keyframes carrusel {
-      0% { transform: translateX(0); }
-      25% { transform: translateX(-25%); }
-      50% { transform: translateX(-50%); }
-      75% { transform: translateX(-75%); }
-      100% { transform: translateX(0); }
     }
     .indicators {
       display: flex;
@@ -118,11 +132,6 @@
       font-size: 1.3rem;
       font-weight: 700;
     }
-    .producto p {
-      color: #bbb;
-      font-size: 1rem;
-      margin: 0.5rem 0 1rem;
-    }
     footer {
       background-color: #111;
       color: #ccc;
@@ -142,11 +151,33 @@
       color: #fff;
     }
   </style>
+  <script>
+    let currentIndex = 0;
+
+    function showSlide(index) {
+      const slides = document.querySelectorAll('.carrusel img');
+      const indicators = document.querySelectorAll('.indicators div');
+      slides.forEach((slide, i) => {
+        slide.style.transform = `translateX(${(i - index) * 100}%)`;
+      });
+      indicators.forEach(ind => ind.classList.remove('active'));
+      indicators[index].classList.add('active');
+      currentIndex = index;
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const indicators = document.querySelectorAll('.indicators div');
+      indicators.forEach((indicator, index) => {
+        indicator.addEventListener('click', () => showSlide(index));
+      });
+      showSlide(currentIndex);
+    });
+  </script>
 </head>
 <body>
   <header>
     <h1>Sombreros Elevation</h1>
-    <p>La exclusividad comienza aquí</p>
+    <span class="by-designer">by Pamela</span>
     <nav>
       <a href="#carrusel">Principal</a>
       <a href="#catalogo">Catálogo</a>
@@ -160,9 +191,11 @@
       <img src="img/modeloshat/sombrero2.jpeg" alt="Sombrero 2">
       <img src="img/modeloshat/sombrero3.jpeg" alt="Sombrero 3">
       <img src="img/modeloshat/sombrero4.jpeg" alt="Sombrero 4">
+      <img src="img/modeloshat/sombrero5.jpeg" alt="Sombrero 5">
     </div>
     <div class="indicators">
       <div class="active"></div>
+      <div></div>
       <div></div>
       <div></div>
       <div></div>
