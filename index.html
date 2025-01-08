@@ -25,7 +25,7 @@
     }
 
     header h1 {
-      font-size: 3rem;
+      font-size: 3.5rem;
       margin: 0;
       font-weight: 700;
       background: linear-gradient(to right, #ff7e5f, #feb47b);
@@ -45,7 +45,7 @@
     }
 
     header .by-designer {
-      font-size: 0.9rem;
+      font-size: 1rem;
       font-style: italic;
       color: #feb47b;
       position: absolute;
@@ -76,41 +76,21 @@
       margin: 2rem 0;
       position: relative;
       overflow: hidden;
-      width: 80%;
+      width: 90%;
       margin: 2rem auto;
     }
 
     .carrusel {
       display: flex;
-      gap: 10px;
-      transition: transform 0.5s ease-in-out;
+      transition: transform 1s ease-in-out;
     }
 
     .carrusel img {
-      width: 400px;
-      height: 250px;
+      width: 800px;
+      height: 500px;
       object-fit: cover;
       border-radius: 10px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
-    }
-
-    .indicators {
-      display: flex;
-      justify-content: center;
-      margin-top: 10px;
-      gap: 5px;
-    }
-
-    .indicators div {
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      background: #444;
-      cursor: pointer;
-    }
-
-    .indicators .active {
-      background: #fff;
     }
 
     .catalogo {
@@ -169,34 +149,21 @@
     }
   </style>
   <script>
-    let currentIndex = 0;
-
-    function showSlide(index) {
-      const slides = document.querySelectorAll('.carrusel img');
-      const indicators = document.querySelectorAll('.indicators div');
-      slides.forEach((slide, i) => {
-        slide.style.transform = `translateX(${(i - index) * 100}%)`;
-      });
-      indicators.forEach(ind => ind.classList.remove('active'));
-      indicators[index].classList.add('active');
-      currentIndex = index;
-    }
-
-    function autoSlide() {
-      const slides = document.querySelectorAll('.carrusel img');
-      currentIndex = (currentIndex + 1) % slides.length;
-      showSlide(currentIndex);
-    }
-
     document.addEventListener('DOMContentLoaded', () => {
-      const indicators = document.querySelectorAll('.indicators div');
-      indicators.forEach((indicator, index) => {
-        indicator.addEventListener('click', () => showSlide(index));
-      });
+      const carrusel = document.querySelector('.carrusel');
+      const slides = document.querySelectorAll('.carrusel img');
+      let currentIndex = 0;
 
-      // Desplazamiento automático
-      setInterval(autoSlide, 3000);
-      showSlide(currentIndex);
+      function updateSlidePosition() {
+        carrusel.style.transform = `translateX(-${currentIndex * slides[0].offsetWidth}px)`;
+      }
+
+      function nextSlide() {
+        currentIndex = (currentIndex + 1) % slides.length;
+        updateSlidePosition();
+      }
+
+      setInterval(nextSlide, 1000);
     });
   </script>
 </head>
@@ -211,20 +178,12 @@
   </header>
 
   <section id="carrusel" class="carrusel-container">
-    <h2 class="carrusel-title">Principal</h2>
     <div class="carrusel">
       <img src="img/modeloshat/sombrero1.jpeg" alt="Sombrero 1">
       <img src="img/modeloshat/sombrero2.jpeg" alt="Sombrero 2">
       <img src="img/modeloshat/sombrero3.jpeg" alt="Sombrero 3">
       <img src="img/modeloshat/sombrero4.jpeg" alt="Sombrero 4">
       <img src="img/modeloshat/sombrero5.jpeg" alt="Sombrero 5">
-    </div>
-    <div class="indicators">
-      <div class="active"></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
     </div>
   </section>
 
