@@ -37,18 +37,43 @@
     header nav a:hover {
       border-bottom: 2px solid #fff;
     }
+    .carrusel-container {
+      text-align: center;
+      margin: 2rem 0;
+    }
+    .carrusel-title {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+    }
     .carrusel {
       display: flex;
       overflow: hidden;
-      position: relative;
-      height: 70vh;
+      justify-content: center;
+      gap: 1rem;
     }
     .carrusel img {
-      min-width: 100%;
-      transition: transform 1.5s ease;
+      width: 100%;
+      max-width: 300px;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
     }
-    .carrusel:hover img {
-      transform: scale(1.05);
+    .indicators {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+    .indicators div {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #444;
+      transition: background 0.3s ease;
+      cursor: pointer;
+    }
+    .indicators .active {
+      background: #fff;
     }
     .catalogo {
       padding: 2rem;
@@ -78,17 +103,23 @@
     .producto h3 {
       margin: 1rem 0 0.5rem;
     }
-    .producto p {
-      color: #bbb;
-      font-size: 1rem;
-      margin: 0.5rem 0 1rem;
-    }
     footer {
       background-color: #111;
       color: #ccc;
       text-align: center;
-      padding: 1rem 0;
+      padding: 2rem 1rem;
       margin-top: 2rem;
+    }
+    footer .contacto {
+      margin-bottom: 1rem;
+    }
+    footer a {
+      color: #aaa;
+      text-decoration: none;
+      margin: 0 0.5rem;
+    }
+    footer a:hover {
+      color: #fff;
     }
   </style>
 </head>
@@ -97,49 +128,75 @@
     <h1>Sombreros Elevation</h1>
     <p>La exclusividad comienza aquí</p>
     <nav>
-      <a href="#carrusel">Carrusel</a>
+      <a href="#carrusel">Principal</a>
       <a href="#catalogo">Catálogo</a>
     </nav>
   </header>
 
-  <section id="carrusel" class="carrusel">
-    <!-- Carrusel con las imágenes -->
-    <img src="img/modeloshat/sombrero1.jpeg" alt="Sombrero 1">
-    <img src="img/modeloshat/sombrero2.jpeg" alt="Sombrero 2">
-    <img src="img/modeloshat/sombrero3.jpeg" alt="Sombrero 3">
-    <img src="img/modeloshat/sombrero4.jpeg" alt="Sombrero 4">
-    <img src="img/modeloshat/sombrero5.jpeg" alt="Sombrero 5">
-    <img src="img/modeloshat/sombrero6.jpeg" alt="Sombrero 6">
-    <img src="img/modeloshat/sombrero7.jpeg" alt="Sombrero 7">
-    <img src="img/modeloshat/sombrero8.jpeg" alt="Sombrero 8">
-    <img src="img/modeloshat/sombrero9.jpeg" alt="Sombrero 9">
+  <section id="carrusel" class="carrusel-container">
+    <h2 class="carrusel-title">Principal</h2>
+    <div class="carrusel">
+      <img src="img/modeloshat/sombrero1.jpeg" alt="Sombrero 1">
+      <img src="img/modeloshat/sombrero2.jpeg" alt="Sombrero 2">
+      <img src="img/modeloshat/sombrero3.jpeg" alt="Sombrero 3">
+      <img src="img/modeloshat/sombrero4.jpeg" alt="Sombrero 4">
+    </div>
+    <div class="indicators">
+      <div class="active"></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
   </section>
 
   <section id="catalogo" class="catalogo">
-    <!-- Catálogo con todas las imágenes -->
     <div class="producto">
-      <a href="img/modeloshat/sombrero1.jpeg" target="_blank">
-        <img src="img/modeloshat/sombrero1.jpeg" alt="Sombrero 1">
-      </a>
+      <img src="img/modeloshat/sombrero1.jpeg" alt="Sombrero 1">
       <h3>Sombrero Clásico 1</h3>
     </div>
     <div class="producto">
-      <a href="img/modeloshat/sombrero2.jpeg" target="_blank">
-        <img src="img/modeloshat/sombrero2.jpeg" alt="Sombrero 2">
-      </a>
+      <img src="img/modeloshat/sombrero2.jpeg" alt="Sombrero 2">
       <h3>Sombrero Clásico 2</h3>
     </div>
     <div class="producto">
-      <a href="img/modeloshat/sombrero3.jpeg" target="_blank">
-        <img src="img/modeloshat/sombrero3.jpeg" alt="Sombrero 3">
-      </a>
+      <img src="img/modeloshat/sombrero3.jpeg" alt="Sombrero 3">
       <h3>Sombrero Clásico 3</h3>
     </div>
-    <!-- Repetir para las 10 imágenes -->
+    <div class="producto">
+      <img src="img/modeloshat/sombrero4.jpeg" alt="Sombrero 4">
+      <h3>Sombrero Clásico 4</h3>
+    </div>
+    <div class="producto">
+      <img src="img/modeloshat/sombrero5.jpeg" alt="Sombrero 5">
+      <h3>Sombrero Clásico 5</h3>
+    </div>
+    <div class="producto">
+      <img src="img/modeloshat/sombrero6.jpeg" alt="Sombrero 6">
+      <h3>Sombrero Clásico 6</h3>
+    </div>
+    <div class="producto">
+      <img src="img/modeloshat/sombrero7.jpeg" alt="Sombrero 7">
+      <h3>Sombrero Clásico 7</h3>
+    </div>
+    <div class="producto">
+      <img src="img/modeloshat/sombrero8.jpeg" alt="Sombrero 8">
+      <h3>Sombrero Clásico 8</h3>
+    </div>
+    <div class="producto">
+      <img src="img/modeloshat/sombrero9.jpeg" alt="Sombrero 9">
+      <h3>Sombrero Clásico 9</h3>
+    </div>
   </section>
 
   <footer>
-    <p>© 2025 Elevation Hat - Exclusividad y estilo</p>
+    <div class="contacto">
+      <p>Contáctanos:</p>
+      <p>Teléfono: +593 999 999 999</p>
+      <p>Email: contacto@elevationhat.ec</p>
+    </div>
+    <div class="redes">
+      <a href="#">Facebook</a> | <a href="#">Instagram</a> | <a href="#">Twitter</a>
+    </div>
   </footer>
 </body>
 </html>
