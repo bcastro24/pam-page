@@ -6,7 +6,7 @@
   <title>Sombreros Elevation</title>
   <style>
     body {
-      font-family: 'Arial', sans-serif;
+      font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
       background: linear-gradient(to bottom, #0d0d0d, #1a1a1a);
@@ -23,10 +23,19 @@
       font-size: 2.5rem;
       margin: 0;
     }
-    header p {
-      margin: 0.5rem 0 0;
+    header nav {
+      margin-top: 1rem;
+    }
+    header nav a {
+      color: #fff;
+      margin: 0 1rem;
+      text-decoration: none;
       font-size: 1.2rem;
-      color: #ccc;
+      border-bottom: 2px solid transparent;
+      transition: border-bottom 0.3s ease;
+    }
+    header nav a:hover {
+      border-bottom: 2px solid #fff;
     }
     .carrusel {
       display: flex;
@@ -87,29 +96,48 @@
   <header>
     <h1>Sombreros Elevation</h1>
     <p>La exclusividad comienza aquí</p>
+    <nav>
+      <a href="#carrusel">Carrusel</a>
+      <a href="#catalogo">Catálogo</a>
+    </nav>
   </header>
-  <section class="carrusel">
-    <img src="https://cdn.pixabay.com/photo/2016/11/29/09/32/fashion-1866579_960_720.jpg" alt="Sombrero 1">
-    <img src="https://cdn.pixabay.com/photo/2021/02/21/15/03/woman-6035312_960_720.jpg" alt="Sombrero 2">
-    <img src="https://cdn.pixabay.com/photo/2018/06/19/21/32/fedora-3483468_960_720.jpg" alt="Sombrero 3">
+
+  <section id="carrusel" class="carrusel">
+    <!-- Carrusel con las imágenes -->
+    <img src="img/modeloshat/sombrero1.jpg" alt="Sombrero 1">
+    <img src="img/modeloshat/sombrero2.jpg" alt="Sombrero 2">
+    <img src="img/modeloshat/sombrero3.jpg" alt="Sombrero 3">
+    <img src="img/modeloshat/sombrero4.jpg" alt="Sombrero 4">
+    <img src="img/modeloshat/sombrero5.jpg" alt="Sombrero 5">
+    <img src="img/modeloshat/sombrero6.jpg" alt="Sombrero 6">
+    <img src="img/modeloshat/sombrero7.jpg" alt="Sombrero 7">
+    <img src="img/modeloshat/sombrero8.jpg" alt="Sombrero 8">
+    <img src="img/modeloshat/sombrero9.jpg" alt="Sombrero 9">
   </section>
-  <section class="catalogo">
+
+  <section id="catalogo" class="catalogo">
+    <!-- Catálogo con todas las imágenes -->
     <div class="producto">
-      <img src="https://cdn.pixabay.com/photo/2017/02/01/23/58/hat-2031067_960_720.jpg" alt="Sombrero Clásico">
-      <h3>Sombrero Clásico</h3>
-      <p>$45.00</p>
+      <a href="img/modeloshat/sombrero1.jpg" target="_blank">
+        <img src="img/modeloshat/sombrero1.jpg" alt="Sombrero 1">
+      </a>
+      <h3>Sombrero Clásico 1</h3>
     </div>
     <div class="producto">
-      <img src="https://cdn.pixabay.com/photo/2016/11/29/10/07/fashion-1866728_960_720.jpg" alt="Sombrero Elegante">
-      <h3>Sombrero Elegante</h3>
-      <p>$75.00</p>
+      <a href="img/modeloshat/sombrero2.jpg" target="_blank">
+        <img src="img/modeloshat/sombrero2.jpg" alt="Sombrero 2">
+      </a>
+      <h3>Sombrero Clásico 2</h3>
     </div>
     <div class="producto">
-      <img src="https://cdn.pixabay.com/photo/2017/02/01/23/56/hat-2031065_960_720.jpg" alt="Sombrero Moderno">
-      <h3>Sombrero Moderno</h3>
-      <p>$60.00</p>
+      <a href="img/modeloshat/sombrero3.jpg" target="_blank">
+        <img src="img/modeloshat/sombrero3.jpg" alt="Sombrero 3">
+      </a>
+      <h3>Sombrero Clásico 3</h3>
     </div>
+    <!-- Repetir para las 10 imágenes -->
   </section>
+
   <footer>
     <p>© 2025 Elevation Hat - Exclusividad y estilo</p>
   </footer>
